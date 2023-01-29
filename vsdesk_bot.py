@@ -4,7 +4,6 @@ import logging
 from aiogram import Bot, Dispatcher, executor, types
 
 TOKEN = '5582671089:AAFDCIOZL2SJ1aeRO1eFys44GZhSb5gpz-E'
-MSG = 'Программировал ли ты сегодня, {}?'
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot=bot)
@@ -13,7 +12,7 @@ dp = Dispatcher(bot=bot)
 async def start_handler(message: types.Message):
     kb = [
         [types.KeyboardButton(text='СОЗДАТЬ ЗАЯВКУ')],
-        [types.KeyboardButton(text='МОИ ЗАЯВКИ')]
+        [types.KeyboardButton(text=f'МОИ ЗАЯВКИ')]
     ]
 
     user_id = message.from_user.id
@@ -26,7 +25,7 @@ async def start_handler(message: types.Message):
         resize_keyboard=True,
         input_field_placeholder="Выберите что Вас интересует"
     )
-    await message.reply(f'Hi {user_name}', reply_markup=keyboard)
+    await message.reply(f'Hi {user_name} {user_id}', reply_markup=keyboard)
 async def on_startup(dispatcher: Dispatcher) -> None:
     await bot.set_my_commands([
         types.BotCommand("start", "it is start command..."),
