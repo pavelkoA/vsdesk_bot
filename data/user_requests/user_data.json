@@ -1,6 +1,6 @@
 {
-  "trenars_kn": {
-                  "treners_id": [959490008],
+  "treners_kn": {
+                  "treners_id": [],
                   "treners_login": "trener_kn",
                   "treners_password": 123,
                   "payload": {"YII_CSRF_TOKEN":"aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg==",
@@ -14,8 +14,8 @@
                               "YII_CSRF_TOKEN":"aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg%3D%3D"
     }
   },
-  "trenars_lvn": {
-                  "treners_id": [],
+  "treners_lvn": {
+                  "treners_id": [959490008],
                   "treners_login": "trener_lvn",
                   "treners_password": 123,
                   "payload": {"YII_CSRF_TOKEN":"aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg==",
@@ -29,7 +29,7 @@
                               "YII_CSRF_TOKEN":"aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg%3D%3D"
     }
   },
-  "trenars_sth": {
+  "treners_sth": {
                   "treners_id": [],
                   "treners_login": "trener_sth",
                   "treners_password": 123,

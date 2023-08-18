@@ -2,28 +2,28 @@ import requests
 from bs4 import BeautifulSoup
 
 
-payload = {
-'YII_CSRF_TOKEN':'aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg==',
-'LoginForm[username]': 'trener_sth',
-'LoginForm[password]': '123',
-'LoginForm[rememberMe]': 0
-}
-headers = {
-  'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36',
-  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-}
-
-cookie = {
-    'NAVCOLLAPSE': '2',
-    'PHPSESSID':'bfgr5w8ijndo81ne7u4ngdt863',
-    'YII_CSRF_TOKEN':'aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg%3D%3D'
-    }
-
-
+# payload = {
+# 'YII_CSRF_TOKEN':'aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg==',
+# 'LoginForm[username]': 'trener_sth',
+# 'LoginForm[password]': '123',
+# 'LoginForm[rememberMe]': 0
+# }
+# headers = {
+#   'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36',
+#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+# }
+#
+# cookie = {
+#     'NAVCOLLAPSE': '2',
+#     'PHPSESSID':'bfgr5w8ijndo81ne7u4ngdt863',
+#     'YII_CSRF_TOKEN':'aUcwVTMyblk2N1hlSm5zdjZnaThOVklLWX4xb042VjNGkZt8cW2Cs482yAYPIoQLjFv4K04QEPY1sHPRQp7SKg%3D%3D'
+#     }
 
 
 
-def all_request_dict():  # Функция заходит на страницу vsdesk и собирает номера заявок
+
+
+def all_request_dict(headers, payload, cookie):  # Функция заходит на страницу vsdesk и собирает номера заявок
     number_list = {}
     ses = requests.session()
     ses.request("POST", "http://vsdesk/site/login", headers=headers, data=payload, cookies=cookie)
@@ -46,7 +46,7 @@ def all_request_dict():  # Функция заходит на страницу v
         #                                 }
     return number_list
 
-def request_data(number):
+def request_data(number, headers, payload, cookie):
     ses = requests.session()
     ses.request("POST", "http://vsdesk/site/login", headers=headers, data=payload, cookies=cookie)
     request = ses.request("GET", 'http://vsdesk/request/' + str(number), headers=headers, data=payload, cookies=cookie)
@@ -62,7 +62,7 @@ def request_data(number):
 
 
 
-def close_request_dict():  # Функция заходит на страницу vsdesk и собирает номера заявок
+def close_request_dict(headers, payload, cookie):  # Функция заходит на страницу vsdesk и собирает номера заявок
     number_list = {}
     ses = requests.session()
     close_request = 'http://vsdesk/request?Request%5Bid%5D=&Request%5Bslabel%5D%5B%5D=%D0%92%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B0&Request%5Bslabel%5D%5B%5D=%D0%97%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D0%B0&Request%5BDate%5D=&Request%5BName%5D=&Request%5Bgroups_id%5D=&Request%5Bfullname%5D=&Request%5Bmfullname%5D=&Request%5Bservice_name%5D=&Request_page=1&ajax=request-grid-full&pageCount=5000'
