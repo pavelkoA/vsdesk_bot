@@ -16,15 +16,15 @@ class DataBase:
 @dataclass
 class Config:
     tgbot: TgBot
-    database: DataBase
+    # database: DataBase
 
-def load_config(tgbot: TgBot, database: DataBase) -> Config:
+def load_config(path: str | None = None) -> Config:
     env = Env()
     env.read_env()
     return Config(tgbot=TgBot(token=env('BOT_TOKEN'),
-                        admin_ids=env('ADMIN_IDS')),
-                database=DataBase(db_name=env('DATABASE'),
-                        db_url=env('BD_ADDRESS'),
-                        db_user=env('BD_USER'),
-                        db_password=env('BD_PASSWORD')))
+                        admin_ids=env('ADMIN_IDS')))
+                        # database=DataBase(db_name=env('DATABASE'),
+                        # db_url=env('BD_ADDRESS'),
+                        # db_user=env('BD_USER'),
+                        # db_password=env('BD_PASSWORD')))
 
