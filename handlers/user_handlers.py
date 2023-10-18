@@ -20,8 +20,16 @@ class FSMCurrentAppealView(StatesGroup):
 
 @router.message(Command(commands='cancel'), StateFilter(default_state))
 async def process_cancel_press(message: Message, state: FSMContext):
-    await message.answer(text=LEXICON_APP_COMMANDS['cancel_not_state'],
+    await message.answer(text=LEXICON_APP_TEXT['cancel_not_state'],
                          reply_markup=keyboards.inline_kb_generator(1, 'my_app', 'my_close_app'))
+
+
+@router.message(Command(commands='cancel'), ~StateFilter(default_state))
+async def process_cancel_press(message: Message, state: FSMContext):
+    await message.answer(text=LEXICON_APP_TEXT['start_text'],
+                         reply_markup=keyboards.inline_kb_generator(1, 'my_app', 'my_close_app'))
+
+
 
 @router.message(CommandStart(), StateFilter(default_state))
 async def process_start_command(message: Message, state: FSMContext):
